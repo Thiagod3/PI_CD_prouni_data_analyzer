@@ -79,8 +79,9 @@ def main():
 
     # Adicionar as porcentagens nas barras
     for i, year in enumerate(bolsas_por_ano_sexo.index):
-        ax.text(year, homens.iloc[i] + 5, f'{porcentagens_homens.iloc[i]:.1f}% H', ha='center', va='bottom', color='black')
-        ax.text(year, homens.iloc[i] + mulheres.iloc[i] + 5, f'{porcentagens_mulheres.iloc[i]:.1f}% F', ha='center', va='bottom', color='black')
+        ax.text(year, homens.iloc[i] + 5, f'{homens.iloc[i]:} ({porcentagens_homens.iloc[i]:.1f}%) M', ha='center', va='bottom', color='black', fontweight='bold')
+        ax.text(year, homens.iloc[i] + mulheres.iloc[i] + 5, f'{mulheres.iloc[i]:} ({porcentagens_mulheres.iloc[i]:.1f}%) F', ha='center', va='bottom', color='black', fontweight='bold')
+        ax.text(year, totais.iloc[i] - mulheres.iloc[i] - homens.iloc[i] + 100, f'Total = {totais.iloc[i]:}', ha='center', va='top', color='white', fontweight='bold', fontsize=12)
 
     # Configurações do gráfico
     ax.xaxis.set_major_locator(MaxNLocator(integer=True))
