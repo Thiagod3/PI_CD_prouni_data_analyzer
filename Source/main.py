@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import glob
 import re
+from matplotlib.ticker import MaxNLocator
 
 
 # Função para ler os cursos do arquivo .txt
@@ -63,8 +64,6 @@ def main():
     # Preparando os dados de homens e mulheres para o gráfico
     homens = bolsas_por_ano_sexo['M']
     mulheres = bolsas_por_ano_sexo['F']
-
-    # Calcular os totais de bolsas para cada ano
     totais = homens + mulheres
 
     # Calcular porcentagens de homens e mulheres
@@ -84,12 +83,14 @@ def main():
         ax.text(year, homens.iloc[i] + mulheres.iloc[i] + 5, f'{porcentagens_mulheres.iloc[i]:.1f}% F', ha='center', va='bottom', color='black')
 
     # Configurações do gráfico
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+    ax.set_xlabel('Ano')
     ax.set_ylabel('Quantidade de Bolsas')
-    ax.set_title('Quantidade de Bolsas por Sexo por Ano')
+    ax.set_title('Quantidade de Bolsas Masculinas x Femininas por Ano (Cursos STEM)')
     ax.legend()
 
     # Mostrar o gráfico
-    plt.xticks(rotation=45)
+    plt.xticks(rotation=0)
     plt.tight_layout()
     plt.show()
 
