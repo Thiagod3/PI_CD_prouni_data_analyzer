@@ -12,7 +12,7 @@ def ler_cursos_stem():
     return cursos_stem
 
 def main():
-    arquivos = glob.glob("pda-prouni-*.csv")
+    arquivos = glob.glob("prouni_*.csv")
 
     dfs = []
 
@@ -20,11 +20,11 @@ def main():
     for arquivo in arquivos:
         print(f"Lendo {arquivo}...")
 
-        municipios_desejados = ["SANTOS", "SAO VICENTE", "PRAIA GRANDE", "CUBATAO", "GUARUJA"]
+        municipios_desejados = ["SANTOS", "SAO VICENTE", "PRAIA GRANDE", "CUBATAO", "GUARUJA", "santos", "sao vicente", "praia grande", "cubatao", "guaruja"]
 
         cursos_stem = ler_cursos_stem()
         try:
-            df = pd.read_csv(arquivo, sep=";", encoding="utf-8-sig")
+            df = pd.read_csv(arquivo, sep=",", encoding="utf-8-sig")
         except UnicodeDecodeError:
             df = pd.read_csv(arquivo, sep=";", encoding="latin1")
 
@@ -70,30 +70,44 @@ def main():
     porcentagens_homens = (homens / totais) * 100
     porcentagens_mulheres = (mulheres / totais) * 100
 
-    # Criar o gráfico de barras empilhadas
-    fig, ax = plt.subplots(figsize=(10, 6))
+    # Criar o gráfico de barras lado a lado
+    fig, ax = plt.subplots(figsize=(16, 9))
 
-    # Plotar as barras empilhadas (Homens e Mulheres)
-    ax.bar(bolsas_por_ano_sexo.index, homens, label='Homens', color='blue')
-    ax.bar(bolsas_por_ano_sexo.index, mulheres, bottom=homens, label='Mulheres', color='pink')
+    # Definir a largura das barras
+    bar_width = 0.35
 
-    # Adicionar as porcentagens nas barras
-    for i, year in enumerate(bolsas_por_ano_sexo.index):
-        ax.text(year, homens.iloc[i] + 5, f'{homens.iloc[i]:} ({porcentagens_homens.iloc[i]:.1f}%) M', ha='center', va='bottom', color='black', fontweight='bold')
-        ax.text(year, homens.iloc[i] + mulheres.iloc[i] + 5, f'{mulheres.iloc[i]:} ({porcentagens_mulheres.iloc[i]:.1f}%) F', ha='center', va='bottom', color='black', fontweight='bold')
-        ax.text(year, totais.iloc[i] - mulheres.iloc[i] - homens.iloc[i] + 100, f'Total = {totais.iloc[i]:}', ha='center', va='top', color='white', fontweight='bold', fontsize=12)
+    # Posição no eixo X
+    anos = bolsas_por_ano_sexo.index
+    indices = range(len(anos))
+
+    # Plotar as barras (lado a lado)
+    bar1 = ax.bar([i - bar_width / 2 for i in indices], homens, width=bar_width, label='Homens', color='blue')
+    bar2 = ax.bar([i + bar_width / 2 for i in indices], mulheres, width=bar_width, label='Mulheres', color='pink')
+
+    # Adicionar as porcentagens nas barras (acima de cada barra)
+    for i, year in enumerate(anos):
+        ax.text(i - bar_width / 2, homens.iloc[i] + 5, f'{homens.iloc[i]} ({porcentagens_homens.iloc[i]:.1f}%)',
+                ha='center', va='bottom', color='black', fontsize=8, rotation=0)
+
+        ax.text(i + bar_width / 2, mulheres.iloc[i] + 5, f'{mulheres.iloc[i]} ({porcentagens_mulheres.iloc[i]:.1f}%)',
+                ha='center', va='bottom', color='black', fontsize=8, rotation=0)
+
+        # Total centralizado no meio das barras
+        ax.text(i, max(homens.iloc[i], mulheres.iloc[i]) + 40,
+                f'Total = {totais.iloc[i]}', ha='center', va='bottom', color='black', fontsize=9, fontweight='bold')
 
     # Configurações do gráfico
+    ax.set_xticks(indices)
+    ax.set_xticklabels(anos, rotation=0)
     ax.xaxis.set_major_locator(MaxNLocator(integer=True))
     ax.set_xlabel('Ano')
     ax.set_ylabel('Quantidade de Bolsas')
     ax.set_title('Quantidade de Bolsas Masculinas x Femininas por Ano (Cursos STEM)')
     ax.legend()
 
-    # Mostrar o gráfico
-    plt.xticks(rotation=0)
     plt.tight_layout()
     plt.show()
+
 
 if __name__ == "__main__":
     main()

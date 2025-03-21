@@ -1,45 +1,62 @@
+AutomaAAo Industrial
+Curso Superior De Tecnologia Em AutomaAAo Industrial
 Análise e desenvolvimento de sistemas
 Análise e desenvolvimento de sistema
 Ciência da computação
 Ciências da computação
+CiAancia Da ComputaAAo
 Ciência de computação
 Sistema de informação
 Sistemas de informação
+Sistemas De InformaAAo
 Design digital
 Física
 Jogos digitais
+Design De Games
+Seguranca Da Informacao
 Curso Superior De Tecnologia Em Segurança Da Informação
 Computação
-Ciências Aeronáuticas
-Ciências Aeronáuticas
 Ciências Biológicas
-Ciências Contábeis
-Ciências Econômicas
 Curso Superior De Tecnologia Em Análise E Desenvolvimento De Sistemas
+Curso Superior De Tecnologia Em Desenvolvimento De Sistemas De Software
+Curso Superior De Tecnologia Em AnAlise E Desenvolvimento De Sistemas(Agrupamento De Area Profissional: InformAtica E De TelecomunicaAAes)
 Engenharia
-Engenharia Agronômica
-Engenharia Ambiental
-Engenharia Ambiental E Sanitária
+#Engenharia Agronômica
+#Engenharia Ambiental
+#Engenharia Ambiental E Sanitária
 Engenharia Civil
 Engenharia Civil E Ambiental
 Engenharia Da Produção
 Engenharia De Automação E Controle
+Engenharia Industrial Mecanica
 Engenharia de computação
 Engenharia da computação
+Engenharia De ComputaAAo
+Engenharia Da ComputaAAo
+Engenharia De Petroleo
+Engenharia De Petroleo E Gas
 Engenharia De Produção
 Engenharia De Produção Mecânica
+Engenharia De Producao Mecanica
+Engenharia De Controle E AutomaAAo
 Engenharia Industrial Mecânica
 Engenharia Elétrica
+Engenharia ElAtrica
 Engenharia Mecânica
 Engenharia Química
+Engenharia QuAmica
 ENGENHARIA BIOMEDICA
-ENGENHARIA DE ROBAMAZÔNIAS
 ENGENHARIA MECATRÔNICA
+Engenharia MecatrA nica
+Engenharia De Software
 Gestão Da Tecnologia Da Informação
+Petroleo E Gas
 Matemática(Ead)
+Matematica (Mc)
 Matemática
 Estatística
 Web Design
+Curso Superior De Tecnologia Em Web Design
 Física
 Geografia
 Geologia
